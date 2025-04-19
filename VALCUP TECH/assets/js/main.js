@@ -207,3 +207,11 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+function setModal(value) {
+  const img         = value.querySelector('.img img').src;
+  const description = value.querySelector('.service_description').textContent;
+
+  document.querySelector('.modal_img').src = img;
+  document.querySelector('.modal_description').textContent = description;
+}
