@@ -68,26 +68,7 @@
     });
   }
 
-  /**
-   * Scroll top button
-   */
-  let scrollTop = document.querySelector('.scroll-top');
-
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
-    }
-  }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+ 
 
   /**
    * Animation on scroll function and init
@@ -205,6 +186,36 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  /**
+   * WhatsApp button toggle
+   */
+  const whatsappButton = document.getElementById('whatsapp-button');
+  const whatsappMenu = document.getElementById('whatsapp-menu');
+
+  whatsappButton.addEventListener('click', () => {
+    whatsappMenu.classList.toggle('d-none');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!whatsappButton.contains(e.target) && !whatsappMenu.contains(e.target)) {
+      whatsappMenu.classList.add('d-none');
+    }
+  });
+
+  document.getElementById('whatsapp-info').addEventListener('click', function (e) {
+    e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+    const phoneNumber = '51975017382';
+    const message = encodeURIComponent('Deseo más información');
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  });
+
+  document.getElementById('whatsapp-advisor').addEventListener('click', function (e) {
+    e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+    const phoneNumber = '51975017382';
+    const message = encodeURIComponent('Deseo contactarme con un asesor');
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  });
 
 })();
 
